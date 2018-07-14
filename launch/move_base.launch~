@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<!-- Run the map server --> 
+<node name="map_server" pkg="map_server" type="map_server" args="/home/ubuntu/droid_ws/src/droid_nav/maps/basement.yaml"> 
+      <param name="frame_id" value="/odom" />
+</node>
+
+<!-- Run AMCL --> 
+<include file="$(find droid_nav)/launch/amcl_diff.launch" /> 
+
+<!-- Run move_base -->
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <rosparam file="$(find droid_nav)/param/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+      <rosparam file="$(find droid_nav)/param/costmap_common_params.yaml" command="load" ns="local_costmap" /> 
+      <rosparam file="$(find droid_nav)/param/costmap_local_params.yaml" command="load" /> 
+      <rosparam file="$(find droid_nav)/param/costmap_global_params.yaml" command="load" /> 
+      <rosparam file="$(find droid_nav)/param/planner_local_params.yaml" command="load" />
+      <rosparam file="$(find droid_nav)/param/move_base_params.yaml" command="load" />
+</node>
+
+</launch>

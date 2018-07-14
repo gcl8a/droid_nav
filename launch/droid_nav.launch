@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find droid)/launch/droid.launch"/>
+
+  <include file="$(find droid_nav)/launch/move_base.launch"/>
+ 
+</launch>
