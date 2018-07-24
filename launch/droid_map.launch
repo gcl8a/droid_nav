@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find droid)/launch/droid.launch"/>
+
+  <include file="$(find droid)/launch/teleop_keyboard.launch"/>
+ 
+  <node pkg="gmapping" type="slam_gmapping" name="gmapping">
+    <param name="delta" value="0.1" />
+  </node>
+
+</launch>
